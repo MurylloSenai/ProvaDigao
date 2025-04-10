@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Livros</title>
+  <link rel="stylesheet" href="./prova.css">
+</head>
+<body>
+  <!-- Div centralizada -->
+  <div id="form-container">
+    <form id="book-form">
+      <h1>Cadastro de Livros</h1>
+      <label for="book-name">Nome do Livro:</label>
+      <input type="text" id="book-name" name="bookName" required>
+
+      <label for="book-author">Autor:</label>
+      <input type="text" id="book-author" name="bookAuthor" required>
+
+      <label for="book-genre">Gênero:</label>
+      <input type="text" id="book-genre" name="bookGenre" required>
+
+      <label for="book-synopsis">Sinopse:</label>
+      <textarea id="book-synopsis" name="bookSynopsis" rows="4" required></textarea>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+  </div>
+
+  <!-- Área para exibir os livros cadastrados -->
+  <section id="books-list">
+    <!-- As caixas de livros serão adicionadas dinamicamente aqui -->
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
