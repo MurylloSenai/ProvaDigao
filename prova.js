@@ -1,14 +1,14 @@
-// URL base da API (substitua pela correta se necessário)
-const API_URL = "http://seu-servidor.com/api/livros";
+// URL base da API (substitua pela URL correta da sua API quando o professor fornecer)
+const API_URL = "http://seu-servidor.com/api/livros"; // INSIRA AQUI A ROTA DA API
 
 // Função para carregar os livros da API
 async function loadBooks() {
   try {
-    // Faz a requisição GET
-    const response = await fetch(API_URL);
-    const books = await response.json();
+    // Faz a requisição GET para buscar os livros no banco
+    const response = await fetch(API_URL); // ALTERE AQUI PARA A ROTA CORRETA DA API
+    const books = await response.json(); // Resposta JSON contendo os livros
 
-    // Seleciona o container de livros
+    // Seleciona o container onde os livros serão exibidos
     const booksList = document.getElementById("books-list");
     booksList.innerHTML = ""; // Limpa o conteúdo existente
 
@@ -17,18 +17,18 @@ async function loadBooks() {
       const bookCard = document.createElement("div");
       bookCard.classList.add("book-card");
 
-      // Conteúdo do livro
+      // Estrutura do livro com as informações recebidas
       bookCard.innerHTML = `
-        <h3>${book.nome}</h3>
-        <p><strong>Autor:</strong> ${book.autor}</p>
-        <p><strong>Gênero:</strong> ${book.genero}</p>
-        <p><strong>Sinopse:</strong> ${book.sinopse}</p>
+        <h3>${book.nome}</h3> <!-- Nome do livro retornado pelo banco -->
+        <p><strong>Autor:</strong> ${book.autor}</p> <!-- Autor do livro -->
+        <p><strong>Gênero:</strong> ${book.genero}</p> <!-- Gênero do livro -->
+        <p><strong>Sinopse:</strong> ${book.sinopse}</p> <!-- Sinopse do livro -->
       `;
 
-      booksList.appendChild(bookCard);
+      booksList.appendChild(bookCard); // Adiciona o card ao DOM
     });
   } catch (error) {
-    console.error("Erro ao carregar os livros:", error);
+    console.error("Erro ao carregar os livros:", error); // Loga o erro, caso ocorra
   }
 }
 
@@ -37,83 +37,48 @@ async function addBook(event) {
   event.preventDefault(); // Evita o recarregamento da página
 
   // Captura os valores do formulário
-  const name = document.getElementById("book-name").value;
-  const author = document.getElementById("book-author").value;
-  const genre = document.getElementById("book-genre").value;
-  const synopsis = document.getElementById("book-synopsis").value;
+  const name = document.getElementById("book-name").value; // Valor do campo "nome"
+  const author = document.getElementById("book-author").value; // Valor do campo "autor"
+  const genre = document.getElementById("book-genre").value; // Valor do campo "gênero"
+  const synopsis = document.getElementById("book-synopsis").value; // Valor do campo "sinopse"
 
-  // Cria o objeto do livro
+  // Cria o objeto do livro para enviar ao banco
   const newBook = {
-    nome: name,
-    autor: author,
-    genero: genre,
-    sinopse: synopsis,
+    nome: name, // Nome do livro
+    autor: author, // Autor
+    genero: genre, // Gênero
+    sinopse: synopsis, // Sinopse
   };
 
   try {
-    // Faz a requisição POST
+    // Faz a requisição POST para cadastrar o livro no banco
     const response = await fetch(API_URL, {
-      method: "POST",
+      method: "POST", // Método HTTP POST
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", // Define que o conteúdo é JSON
       },
-      body: JSON.stringify(newBook),
+      body: JSON.stringify(newBook), // Converte o objeto para JSON
     });
 
     if (response.ok) {
       // Limpa o formulário após o sucesso
       document.getElementById("book-form").reset();
 
-      // Recarrega a lista de livros
+      // Recarrega a lista de livros para refletir a adição
       loadBooks();
     } else {
-      console.error("Erro ao cadastrar o livro:", response.statusText);
+      console.error("Erro ao cadastrar o livro:", response.statusText); // Loga o erro, se houver
     }
   } catch (error) {
-    console.error("Erro ao cadastrar o livro:", error);
+    console.error("Erro ao cadastrar o livro:", error); // Loga o erro de conexão
   }
 }
 
 // Inicializa as funções
 document.addEventListener("DOMContentLoaded", () => {
   // Carrega os livros ao abrir a página
-  loadBooks();
+  loadBooks(); // Faz a requisição GET
 
-  // Adiciona o evento ao formulário
+  // Adiciona o evento de submissão ao formulário
   document.getElementById("book-form").addEventListener("submit", addBook);
 });
-
-
-
-//outro possivel
-
-async function loadBooks() {
-    const booksList = document.getElementById("books-list");
-    booksList.innerHTML = ""; // Limpa os livros anteriores antes de carregar os novos
-  
-    try {
-      const response = await fetch("http://localhost:3000/busca");
-      const books = await response.json();
-      console.log(books); // Verificar no console os livros recebidos
-  
-      books.map((book) => addBookToPage(book)); // Adiciona cada livro ao DOM
-    } catch (error) {
-      console.error("Erro ao carregar livros", error); // Exibe o erro no console
-    }
-  }
-  
-  function addBookToPage(book) {
-    const booksList = document.getElementById("books-list");
-    const bookCard = document.createElement("div");
-    bookCard.classList.add("book-card");
-  
-    bookCard.innerHTML = `
-      <h3>${book.nome}</h3>
-      <p><strong>Autor:</strong> ${book.autor}</p>
-      <p><strong>Gênero:</strong> ${book.genero}</p>
-      <p><strong>Sinopse:</strong> ${book.sinopse}</p>
-    `;
-  
-    booksList.appendChild(bookCard);
-  }
-  
