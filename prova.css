@@ -1,100 +1,151 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Estilo geral da página */
+/* Configurações Gerais */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #022b3a; /* Azul profundo */
+  color: #ffffff; /* Texto claro */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Formulário */
+#form-container {
+  background: #e1e5f2; /* Cinza muito claro */
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+#form-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #1f7a8c; /* Azul médio */
+}
+
+#book-form label {
+  font-weight: bold;
+  color: #022b3a; /* Azul profundo */
+  display: block;
+  margin-bottom: 5px;
+}
+
+#book-form input,
+#book-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #1f7a8c; /* Azul médio */
+  border-radius: 8px;
+  background-color: #ffffff; /* Fundo branco */
+  color: #022b3a;
+  font-size: 1rem;
+}
+
+#book-form input:focus,
+#book-form textarea:focus {
+  border-color: #bfdbf7; /* Azul claro */
+  outline: none;
+}
+
+#book-form button {
+  width: 100%;
+  padding: 12px;
+  background: #1f7a8c; /* Azul médio */
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+#book-form button:hover {
+  /* Mantém a mesma cor de fundo no hover */
+  background: #022b3a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Cards */
+#cards-section {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Garante tamanhos flexíveis */
+  width: 100%;
+}
+
+.card {
+  background: #1f7a8c; /* Azul médio */
+  padding: 20px;
+  border-radius: 16px; /* Bordas mais arredondadas */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  text-align: left;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  /* Adiciona uma sombra mais intensa no hover */
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+  color: #bfdbf7; /* Azul claro */
+}
+
+.card p {
+  margin: 5px 0;
+  color: #e1e5f2; /* Cinza muito claro */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
   body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-  }
-  
-  /* Formulário centralizado */
-  #form-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-  }
-  
-  #form-container h1 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  #book-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  #book-form input,
-  #book-form textarea {
-    width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  
-  #book-form button {
-    width: 100%;
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  #book-form button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Área dos livros cadastrados */
-  #books-list {
-    margin-top: 30px;
-    width: 100%;
-    max-width: 800px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
   }
-  
-  /* Caixas individuais de livros */
-  .book-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  #form-container {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  #cards-section {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ajuste para telas menores */
+    gap: 15px;
+  }
+
+  .card {
     padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
   }
-  
-  .book-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-    color: #007bff;
+}
+
+@media (max-width: 480px) {
+  #form-container h1 {
+    font-size: 1.5rem;
   }
-  
-  .book-card p {
+
+  #book-form input,
+  #book-form textarea {
     font-size: 0.9rem;
-    line-height: 1.4;
+    padding: 8px;
   }
-  
+
+  .card {
+    padding: 15px;
+    border-radius: 12px; /* Menos arredondado em telas pequenas */
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+  }
+}
