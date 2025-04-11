@@ -1,37 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Livros</title>
-  <link rel="stylesheet" href="./prova.css">
+  <title>Formulário de Livros</title>
+  <link rel="stylesheet" href="prova.css">
 </head>
 <body>
-  <!-- Div centralizada -->
   <div id="form-container">
+    <h1>Cadastre um Livro</h1>
     <form id="book-form">
-      <h1>Cadastro de Livros</h1>
-      <label for="book-name">Nome do Livro:</label>
-      <input type="text" id="book-name" name="bookName" required>
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" required>
 
-      <label for="book-author">Autor:</label>
-      <input type="text" id="book-author" name="bookAuthor" required>
+      <label for="data">Data</label>
+      <input type="date" id="data" required>
 
-      <label for="book-genre">Gênero:</label>
-      <input type="text" id="book-genre" name="bookGenre" required>
+      <label for="genero">Gênero</label>
+      <input type="text" id="genero" required>
 
-      <label for="book-synopsis">Sinopse:</label>
-      <textarea id="book-synopsis" name="bookSynopsis" rows="4" required></textarea>
+      <label for="autor">Autor</label>
+      <input type="text" id="autor" required>
 
-      <button type="submit">Cadastrar</button>
+      <label for="sinopse">Sinopse</label>
+      <textarea id="sinopse" rows="4" required></textarea>
+
+      <button type="submit">Adicionar Livro</button>
     </form>
   </div>
 
-  <!-- Área para exibir os livros cadastrados -->
-  <section id="books-list">
-    <!-- As caixas de livros serão adicionadas dinamicamente aqui -->
+  <section id="cards-section">
+    <div class="card">
+      <h3>A Arte da Guerra</h3>
+      <p><strong>Autor:</strong> Sun Tzu</p>
+      <p><strong>Gênero:</strong> Estratégia</p>
+      <p><strong>Sinopse:</strong> Um guia clássico sobre estratégias militares aplicadas à vida.</p>
+    </div>
+    <div class="card">
+      <h3>1984</h3>
+      <p><strong>Autor:</strong> George Orwell</p>
+      <p><strong>Gênero:</strong> Distopia</p>
+      <p><strong>Sinopse:</strong> Uma visão sombria de um futuro totalitário.</p>
+    </div>
+    <div class="card">
+      <h3>1984</h3>
+      <p><strong>Autor:</strong> George Orwell</p>
+      <p><strong>Gênero:</strong> Distopia</p>
+      <p><strong>Sinopse:</strong> Uma visão sombria de um futuro totalitário.</p>
+    </div>
+    <div class="card">
+      <h3>1984</h3>
+      <p><strong>Autor:</strong> George Orwell</p>
+      <p><strong>Gênero:</strong> Distopia</p>
+      <p><strong>Sinopse:</strong> Uma visão sombria de um futuro totalitário.</p>
+    </div>
+  
+   
   </section>
-
-  <script src="script.js"></script>
 </body>
 </html>
